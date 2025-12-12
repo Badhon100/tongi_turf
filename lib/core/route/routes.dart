@@ -18,11 +18,11 @@ class AppRoute {
   }
 
   static MaterialPageRoute _getInitialRoute() {
-    return _routeBuilder(const LoginPage());
+    return _routeBuilder(LoginPage());
   }
 
   static MaterialPageRoute _getLoginPageRoute() {
-    return _routeBuilder(const LoginPage());
+    return _routeBuilder(LoginPage());
   }
 
 }

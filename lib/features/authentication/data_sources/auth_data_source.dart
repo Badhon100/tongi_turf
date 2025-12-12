@@ -1,6 +1,6 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class AuthDataSource{
+class AuthDataSource {
   final supabase = Supabase.instance.client;
 
   Future<String> loginUser(String email, String password) async {
@@ -15,6 +15,8 @@ class AuthDataSource{
       } else {
         throw Exception('Login failed');
       }
+    } on AuthException catch (e) {
+      throw Exception('Authentication error: ${e.message}');
     } catch (e) {
       throw Exception('Error during login: $e');
     }

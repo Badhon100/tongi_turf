@@ -9,13 +9,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final AuthRepository authRepository;
 
   LoginBloc(this.authRepository) : super(LoginInitial()) {
-    on<EmailChanged>((event, emit) {
-      emit(state.copyWith(email: event.email));
-    });
-
-    on<PasswordChanged>((event, emit) {
-      emit(state.copyWith(password: event.password));
-    });
 
     on<TogglePasswordVisibility>((event, emit) {
       emit(state.copyWith(isPasswordVisible: !state.isPasswordVisible));
@@ -31,9 +24,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     emit(state.copyWith(isLoading: true, errorMessage: null));
 
     try {
-      final result = await authRepository.login(
-        state.email.trim(),
-        state.password.trim(),
+      await authRepository.login(
+        event.email.trim(),
+        event.password.trim(),
       );
 
       emit(state.copyWith(isLoading: false, isSuccess: true));

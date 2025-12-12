@@ -2,20 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:tongi_turf/core/theme/app_colors.dart';
 import 'package:tongi_turf/core/widgets/custom_widgets.dart';
 
-class PasswordTextField extends StatelessWidget {
-  final bool isVisible;
+class CommonTextField extends StatelessWidget {
   final TextEditingController controller;
-  final VoidCallback onToggle;
-  final String? Function(String?)? validator;
+  final String? Function(String?)? validator; // optional validator
+  final TextInputType keyboardType;
   final String label;
 
-  const PasswordTextField({
+  const CommonTextField({
     super.key,
-    required this.isVisible,
     required this.controller,
-    required this.onToggle,
     required this.label,
     this.validator,
+    this.keyboardType = TextInputType.text,
   });
 
   @override
@@ -24,11 +22,9 @@ class PasswordTextField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TextFormField(
-          obscureText: !isVisible,
-          controller: controller,
-          validator: validator,
+          keyboardType: keyboardType,
           decoration: InputDecoration(
-            label: t14b600_textPrimary(label),
+            label: t14b600_textPrimary(label,),
             border: UnderlineInputBorder(), // no outline
             fillColor: AppColors.background,
             focusedBorder: const UnderlineInputBorder(
@@ -37,11 +33,10 @@ class PasswordTextField extends StatelessWidget {
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: AppColors.darkBg),
             ),
-            suffixIcon: IconButton(
-              icon: Icon(isVisible ? Icons.visibility : Icons.visibility_off),
-              onPressed: onToggle,
-            ),
+
           ),
+          controller: controller,
+          validator: validator,
         ),
         if (validator != null) const SizedBox(height: 4), // space for error
       ],
