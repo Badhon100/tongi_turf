@@ -22,7 +22,7 @@ class GlassBottomNavBar extends StatelessWidget {
                 child: Container(
                   height: 64,
                   decoration: BoxDecoration(
-                    color: AppColors.background.withOpacity(0.75),
+                    color: AppColors.darkBg.withOpacity(0.75),
                     borderRadius: BorderRadius.circular(28),
                     border: Border.all(color: AppColors.background.withOpacity(0.4)),
                   ),
@@ -89,7 +89,7 @@ class _NavItem extends StatelessWidget {
         child: Icon(
           icon,
           size: 26,
-          color: isSelected ? AppColors.textWhite : AppColors.textPrimary,
+          color: isSelected ? AppColors.textWhite : AppColors.textDisabled,
         ),
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tongi_turf/features/bottom_nav_bar/view/bloc/bottom_nav_bar_bloc.dart';
 import 'package:tongi_turf/features/bottom_nav_bar/view/widges/bottom_nav_bar.dart';
+import 'package:tongi_turf/features/profile/view/pages/profile_page.dart';
 
 class BottomNavBarPage extends StatelessWidget {
   const BottomNavBarPage({super.key});
@@ -9,7 +10,7 @@ class BottomNavBarPage extends StatelessWidget {
   static final List<Widget> _pages = [
     const Center(child: Text('Home')),
     const Center(child: Text('Bookings')),
-    const Center(child: Text('Profile')),
+    const ProfilePage(),
   ];
 
   @override

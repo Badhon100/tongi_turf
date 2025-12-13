@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tongi_turf/features/authentication/view/pages/auth_gate.dart';
 import 'package:tongi_turf/features/authentication/view/pages/login_page.dart';
 import 'package:tongi_turf/features/bottom_nav_bar/view/pages/bottom_nav_bar_page.dart';
 
@@ -21,7 +22,7 @@ class AppRoute {
   }
 
   static MaterialPageRoute _getInitialRoute() {
-    return _routeBuilder(LoginPage());
+    return _routeBuilder(AuthGate());
   }
 
   static MaterialPageRoute _getLoginPageRoute() {
