@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tongi_turf/core/dependency/dependencies.dart/bottom_nav_bar_dependency.dart';
 import 'package:tongi_turf/core/dependency/dependencies.dart/login_dependency.dart';
 
 class Dependency {
@@ -16,6 +17,7 @@ class Dependency {
 
     // Initialize common and feature-specific dependencies
     LoginDependency.init(sl);
+    BottomNavBarDependency.init(sl);
   
   }
 }

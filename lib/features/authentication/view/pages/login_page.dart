@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -44,8 +43,10 @@ class LoginPage extends StatelessWidget {
               child: BlocConsumer<LoginBloc, LoginState>(
                 listener: (context, state) {
                   if (state.isSuccess) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Login Successful")),
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      '/bottom_nav_bar_page',
+                      (route) => false,
                     );
                   }
 
@@ -55,6 +56,7 @@ class LoginPage extends StatelessWidget {
                     );
                   }
                 },
+
                 builder: (context, state) {
                   final bloc = context.read<LoginBloc>();
 
@@ -71,7 +73,7 @@ class LoginPage extends StatelessWidget {
                           "Enter your email and password to login",
                         ),
                         sH16(),
-                    
+
                         CommonTextField(
                           label: "Email",
                           keyboardType: TextInputType.emailAddress,
@@ -105,15 +107,20 @@ class LoginPage extends StatelessWidget {
                         ),
                         sH16(),
                         sH8(),
-                       CustomButton(
-                                title: "Login",
-                                isLoading: state.isLoading,
-                                onTap: () {
-                                  if (_formKey.currentState!.validate()) {
-                                    bloc.add(LoginSubmitted(email: emailController.text, password: passwordController.text));
-                                  }
-                                },
-                              ),
+                        CustomButton(
+                          title: "Login",
+                          isLoading: state.isLoading,
+                          onTap: () {
+                            if (_formKey.currentState!.validate()) {
+                              bloc.add(
+                                LoginSubmitted(
+                                  email: emailController.text,
+                                  password: passwordController.text,
+                                ),
+                              );
+                            }
+                          },
+                        ),
                       ],
                     ),
                   );
@@ -128,7 +135,12 @@ class LoginPage extends StatelessWidget {
 }
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({required this.onTap, required this.title, this.isLoading = false, super.key});
+  const CustomButton({
+    required this.onTap,
+    required this.title,
+    this.isLoading = false,
+    super.key,
+  });
 
   final VoidCallback onTap;
   final String title;
@@ -147,7 +159,7 @@ class CustomButton extends StatelessWidget {
 
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 12),
-          child: Center(child: isLoading? loader() : t18b_textWhite(title),),
+          child: Center(child: isLoading ? loader() : t18b_textWhite(title)),
         ),
       ),
     );
