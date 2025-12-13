@@ -35,6 +35,13 @@ t32b_textPrimary(String title) => commonText(
   fontWeight: FontWeight.bold,
 );
 
+t24b900_Primary(String title) => commonText(
+  title,
+  size: 24,
+  color: AppColors.primary,
+  fontWeight: FontWeight.w900,
+);
+
 t14_textSecondary(String title) => commonText(title, size: 14, color: AppColors.textSecondary);
 
 t18_textSecondary(String title) => commonText(title, size: 18, color: AppColors.textSecondary);
@@ -43,6 +50,8 @@ t14_textPrimary(String title) => commonText(title, size: 14, color: AppColors.te
 
 t16_textPrimary(String title) => commonText(title, size: 16, color: AppColors.textPrimary);
 
+t16_textWhite(String title) =>
+    commonText(title, size: 16, color: AppColors.background);
 t16b_textPrimary(String title) => commonText(
   title,
   size: 16,
